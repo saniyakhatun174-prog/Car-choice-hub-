@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Halal Car Brand</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 20px;
+  background: black;
+}
+
+/* Search */
+.search-box {
+  text-align: center;
+  margin: 20px;
+}
+
+input {
+  padding: 12px;
+  width: 260px;
+  border-radius: 25px;
+  border: none;
+}
+
+/* Car List */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.car {
+  background: #111;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  width: 250px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.car:hover {
+  transform: scale(1.05);
+}
+
+.car img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Details Section */
+.details {
+  display: none;
+  text-align: center;
+  padding: 20px;
+}
+
+.details img {
+  width: 80%;
+  border-radius: 15px;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.buy {
+  background: green;
+  color: white;
+}
+
+.back {
+  background: red;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Halal Car Brand</h1>
+  <p>Select Your Dream Car</p>
+</header>
+
+<div class="search-box">
+  <input type="text" id="search" placeholder="Search car..." onkeyup="searchCar()">
+</div>
+
+<!-- CAR LIST -->
+<div class="container" id="carList">
+
+  <div class="car" onclick="showDetails('Red Sport Car','₹10,00,000','https://images.unsplash.com/photo-1503376780353-7e6692767b70')">
+    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+    <h3>Red Sport Car</h3>
+    <p>₹10,00,000</p>
+  </div>
+
+  <div class="car" onclick="showDetails('Black Luxury Car','₹25,00,000','https://images.unsplash.com/photo-1492144534655-ae79c964c9d7')">
+    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7">
+    <h3>Black Luxury Car</h3>
+    <p>₹25,00,000</p>
+  </div>
+
+  <div class="car" onclick="showDetails('White Premium Car','₹18,00,000','https://images.unsplash.com/photo-1511919884226-fd3cad34687c')">
+    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c">
+    <h3>White Premium Car</h3>
+    <p>₹18,00,000</p>
+  </div>
+
+  <div class="car" onclick="showDetails('Blue Speed Car','₹12,00,000','https://images.unsplash.com/photo-1502877338535-766e1452684a')">
+    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
+    <h3>Blue Speed Car</h3>
+    <p>₹12,00,000</p>
+  </div>
+
+  <div class="car" onclick="showDetails('Yellow Racing Car','₹30,00,000','https://images.unsplash.com/photo-1485291571150-772bcfc10da5')">
+    <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5">
+    <h3>Yellow Racing Car</h3>
+    <p>₹30,00,000</p>
+  </div>
+
+</div>
+
+<!-- DETAILS -->
+<div class="details" id="details">
+  <h2 id="name"></h2>
+  <img id="image">
+  <h3 id="price"></h3>
+
+  <button class="buy">Buy Now</button>
+  <button class="back" onclick="goBack()">Back</button>
+</div>
+
+<script>
+function searchCar() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let cars = document.getElementsByClassName("car");
+
+  for (let i = 0; i < cars.length; i++) {
+    let text = cars[i].innerText.toLowerCase();
+    cars[i].style.display = text.includes(input) ? "block" : "none";
+  }
+}
+
+function showDetails(name, price, img) {
+  document.getElementById("carList").style.display = "none";
+  document.getElementById("details").style.display = "block";
+
+  document.getElementById("name").innerText = name;
+  document.getElementById("price").innerText = "Price: " + price;
+  document.getElementById("image").src = img;
+}
+
+function goBack() {
+  document.getElementById("carList").style.display = "flex";
+  document.getElementById("details").style.display = "none";
+}
+</script>
+
+</body>
+</html>
